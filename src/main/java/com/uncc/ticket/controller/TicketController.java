@@ -50,15 +50,16 @@ public class TicketController {
         return "redirect:/";
     }
 
+    // EDITED ON 10/14/2020 BY CHRIS DONOHUE - 801030506 - ITSC 3155-Y01
     @RequestMapping(value = "/tickets/edit/{id}", method = RequestMethod.GET)
     public String editTicket(Model model,@PathVariable("id") Long id) {
-        // Code here
-        return "redirect:/"; //Remove this line
+        model.addAttribute("ticket", ticketService.findById(id));
+        return "tickets/storeTicket"; //Remove this line
     }
-
+    // EDITED ON 10/14/2020 BY CHRIS DONOHUE - 801030506 - ITSC 3155-Y01
     @RequestMapping(value = "/tickets/delete/{id}", method = RequestMethod.GET)
     public String deleteTicket(@PathVariable("id") Long id) {
-        // Code here
+        ticketService.deleteById(id);
         return "redirect:/";
     }
 
